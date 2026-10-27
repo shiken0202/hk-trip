@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港四天三夜自由行行程表</title>
+    <style>
+        body { 
+            font-family: 'Nunito', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; color: #4a4a4a; background-color: #fff0f5; /* Light pinkish-purple background */
+            margin: 0; padding: 0; overflow-x: hidden;
+        }
+        
+        /* Vibrant, cute header */
+        header { 
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            color: #d81b60; 
+            padding: 40px 15px 50px; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+            border-bottom: 5px dashed #ffb6c1;
+        }
+        
+        .header-content { position: relative; z-index: 2; }
+        
+        h1 { 
+            font-size: 32px; margin: 0 0 10px; font-weight: 900; letter-spacing: 2px; 
+            color: #fff; text-shadow: 2px 2px 0px #ff6b81, 4px 4px 0px rgba(0,0,0,0.1);
+        }
+        .header-dates {
+            display: inline-block; background: rgba(255,255,255,0.8); color: #ff6b81;
+            padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Floating header decorations */
+        .cloud {
+            position: absolute; background: white; border-radius: 50px;
+            animation: floatCloud 20s infinite linear; opacity: 0.8; z-index: 1;
+        }
+        .cloud::before, .cloud::after {
+            content: ''; position: absolute; background: white; border-radius: 50%;
+        }
+        .cloud1 { width: 60px; height: 20px; top: 20px; left: -60px; }
+        .cloud1::before { width: 30px; height: 30px; top: -15px; left: 10px; }
+        .cloud1::after { width: 20px; height: 20px; top: -10px; right: 10px; }
+        
+        .cloud2 { width: 80px; height: 25px; top: 60px; left: -100px; animation-duration: 25s; animation-delay: 5s; transform: scale(0.8);}
+        .cloud2::before { width: 40px; height: 40px; top: -20px; left: 15px; }
+        .cloud2::after { width: 25px; height: 25px; top: -12px; right: 15px; }
+
+        @keyframes floatCloud {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .container { padding: 15px; max-width: 600px; margin: auto; position: relative; top: -20px; }
+        
+        /* Cute Cards */
+        .card { 
+            background: white; border-radius: 20px; padding: 20px; margin-bottom: 25px; 
+            box-shadow: 0 8px 15px rgba(255, 107, 129, 0.15); 
+            border: 2px solid #ffe4e1;
+            position: relative;
+        }
+        
+        /* Ribbon tag for days */
+        h2 { 
+            font-size: 18px; color: #fff; background: #ff6b81; 
+            display: inline-block; padding: 8px 20px; border-radius: 15px 15px 15px 0;
+            margin: -35px 0 15px -35px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { margin-bottom: 30px; padding-left: 20px; border-left: 4px dotted #ffb6c1; position: relative; }
+        li::before {
+            content: '🌟'; position: absolute; left: -14px; top: -2px; font-size: 14px;
+            background: white; border-radius: 50%;
+        }
+
+        .time { font-weight: bold; color: #ff8c94; display: block; margin-bottom: 5px; font-size: 15px; }
+        
+        .spot { font-weight: 800; font-size: 18px; color: #4a4a4a; display: block; margin-bottom: 8px; }
+        .spot a { color: #5dade2; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s;}
+        .spot a:hover { color: #3498db; transform: scale(1.02); }
+        
+        /* --- Redesigned Transport Container --- */
+        /* Flex row, align items horizontally to prevent overlapping */
+        .transport { 
+            font-size: 14px; color: #2ecc71; background: #e8f8f5; padding: 8px 15px; 
+            border-radius: 20px; display: inline-flex; flex-direction: row; align-items: center; 
+            gap: 12px; margin-bottom: 8px; font-weight: 700; border: 1px dashed #2ecc71;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        
+        .note { font-size: 14px; color: #7f8c8d; margin-top: 6px; background: #f9ebea; padding: 10px; border-radius: 10px;}
+        
+        /* Info boxes */
+        .info-box { background: #eaf2f8; padding: 15px; border-radius: 15px; font-size: 14px; margin-bottom: 15px; border: 1px solid #d4e6f1;}
+        .info-title { font-weight: bold; color: #2980b9; display: block; margin-bottom: 5px; font-size: 16px;}
+        
+        /* Custom Animations */
+        /* 1. Walk */
+        .walk-container { width: 20px; height: 24px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .person-body { position: absolute; top: 4px; width: 8px; height: 10px; background: #2ecc71; border-radius: 4px; }
+        .person-head { position: absolute; top: -6px; width: 10px; height: 10px; background: #f5b041; border-radius: 50%; }
+        .leg { position: absolute; top: 13px; width: 4px; height: 8px; background: #27ae60; border-radius: 2px; transform-origin: top center; }
+        .leg.left { left: 4px; animation: walkLeg 0.8s infinite alternate ease-in-out; }
+        .leg.right { left: 12px; animation: walkLeg 0.8s infinite alternate-reverse ease-in-out; }
+        @keyframes walkLeg { 0% { transform: rotate(-35deg); } 100% { transform: rotate(35deg); } }
+
+        /* 2. Bus */
+        .bus-container { width: 34px; height: 22px; position: relative; display: flex; align-items: center; justify-content: center; animation: bounceBus 2s infinite ease-in-out;}
+        .bus-body { position: absolute; bottom: 4px; width: 34px; height: 16px; background: #f1c40f; border-radius: 6px 8px 3px 3px; border-bottom: 3px solid #e74c3c; }
+        .bus-window { position: absolute; top: 3px; left: 4px; width: 16px; height: 6px; background: #85c1e9; border-radius: 2px; }
+        .wheel { position: absolute; bottom: 0; width: 8px; height: 8px; background: #34495e; border-radius: 50%; border: 2px solid #ecf0f1; animation: spinWheel 1s infinite linear; }
+        .wheel.front { right: 4px; }
+        .wheel.back { left: 4px; }
+        @keyframes bounceBus { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+
+        /* 3. Train - Modified so it doesn't move outside its box */
+        .train-wrap { width: 40px; height: 20px; display: flex; align-items: center; justify-content: center;}
+        .train-container { width: 36px; height: 16px; position: relative; border-radius: 6px; overflow: hidden; background: #bdc1c6; border-top: 4px solid #e74c3c;}
+        .train-window { position: absolute; top: 4px; width: 6px; height: 6px; background: #fdfefe; border-radius: 2px; }
+        .tw1 { left: 4px; animation: slideWindow 1s infinite linear; }
+        .tw2 { left: 14px; animation: slideWindow 1s infinite linear 0.2s; }
+        .tw3 { left: 24px; animation: slideWindow 1s infinite linear 0.4s; }
+        
+        /* Simulate movement by moving windows instead of the whole train body */
+        @keyframes slideWindow {
+            0% { transform: translateX(20px); opacity: 0; }
+            30% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translateX(-20px); opacity: 0; }
+        }
+
+        @keyframes spinWheel { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Cute Location Pin Pulse */
+        .pin-container { display: inline-block; position: relative; margin-left: 2px; width: 16px; height: 16px; top: 2px;}
+        .pin-dot {
+            width: 12px; height: 12px; background-color: #ff6b81; border-radius: 50%;
+            display: inline-block; position: absolute; z-index: 2; top:2px; left:2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .pin-dot::after {
+            content: ''; position: absolute; width: 4px; height: 4px; background: white; border-radius: 50%; top: 2px; left: 4px;
+        }
+        .pin-pulse {
+            width: 12px; height: 12px; background-color: #ff6b81; border-radius: 50%;
+            position: absolute; top: 2px; left: 2px; z-index: 1;
+            animation: pulsePin 1.5s infinite ease-out;
+        }
+        @keyframes pulsePin { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="header-content">
+            <h1>🇭🇰 香港四天三夜 ✈️</h1>
+            <div class="header-dates">11/13 (五) ➔ 11/16 (一)</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Info Section -->
+        <div class="card" style="margin-top: 10px;">
+            <h2 style="background: #3498db;">📝 基本資訊</h2>
+            <div class="info-box">
+                <span class="info-title">✈️ 航班資訊 (香港航空)</span>
+                <strong>去程：</strong>11/13 HX253 (11:45 - 13:55)<br>
+                <strong>回程：</strong>11/16 HX260 (16:30 - 18:20)<br>
+                <div style="margin-top: 5px; color: #e67e22; font-weight: bold;">🎒 托運 23kg (1件) / 手提 7kg (1件)</div>
+            </div>
+            <div class="info-box" style="background: #fef9e7; border-color: #f9e79f;">
+                <span class="info-title" style="color: #f39c12;">🏨 住宿資訊</span>
+                <span style="font-size: 16px; font-weight: 800;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=紅茶館酒店+油麻地鴉打街6號" target="_blank" style="color:#d35400; text-decoration:none;">
+                        紅茶館酒店 (油麻地)
+                        <span class="pin-container"><span class="pin-dot" style="background:#f39c12;"></span><span class="pin-pulse" style="background:#f39c12;"></span></span>
+                    </a>
+                </span><br>
+                📍 油麻地鴉打街6號<br>
+                ⏰ 14:30 入住 / 11:30 退房
+            </div>
+            <div class="info-box" style="background:#fdedec; border-color: #fadbd8;">
+                <span class="info-title" style="color:#e74c3c;">🎟️ KKday 票券提醒</span>
+                您有預訂 <strong><a href="https://www.kkday.com/zh-tw/product/266440" target="_blank" style="color: #c0392b; text-decoration: underline;">香港Fun Pass</a></strong>！<br>可用於兌換「山頂纜車」或「西九龍M+」等門票，<strong>請記得提前在 App 開通預約喔！</strong>
+            </div>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="card">
+            <h2>Day 1 ✦ 11/13 (五)</h2>
+            <ul>
+                <li>
+                    <span class="time">13:55 - 15:00</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=香港國際機場" target="_blank">抵達香港國際機場 <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="note">辦理入境手續與提領行李，準備開始旅程！</div>
+                </li>
+                <li>
+                    <span class="time">15:00 - 16:30</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=紅茶館酒店+油麻地鴉打街6號" target="_blank">前往飯店 ＆ Check-in <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="bus-container">
+                            <div class="bus-body"></div>
+                            <div class="bus-window"></div>
+                            <div class="wheel front"></div>
+                            <div class="wheel back"></div>
+                        </div>
+                        <span>城巴 A21 (往紅磡站)</span>
+                    </div>
+                    <div class="note">搭乘 A21 至「文明里, 彌敦道」站下車，步行約 3 分鐘抵達飯店。</div>
+                </li>
+                <li>
+                    <span class="time">17:30 - 19:30</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=廟街夜市+香港" target="_blank">廟街夜市 (晚餐) <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="walk-container">
+                            <div class="person-head"></div>
+                            <div class="person-body"></div>
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <span>步行約 5 分鐘</span>
+                    </div>
+                    <div class="note">推薦品嚐廟街知名的「興記煲仔飯」或熱炒大排檔。</div>
+                </li>
+                <li>
+                    <span class="time">19:45 - 20:45</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=佳佳甜品+香港" target="_blank">佳佳甜品 (宵夜) <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="walk-container">
+                            <div class="person-head"></div>
+                            <div class="person-body"></div>
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <span>步行約 5 分鐘</span>
+                    </div>
+                    <div class="note">米其林必比登推薦！必點芝麻糊、核桃露加手作湯圓。</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="card">
+            <h2>Day 2 ✦ 11/14 (六)</h2>
+            <ul>
+                <li>
+                    <span class="time">09:00 - 10:00</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=澳洲牛奶公司+香港" target="_blank">澳洲牛奶公司 (早餐) <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="walk-container">
+                            <div class="person-head"></div>
+                            <div class="person-body"></div>
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <span>步行 10 分鐘</span>
+                    </div>
+                    <div class="note">招牌炒蛋多士、蛋白燉鮮奶，感受香港茶餐廳極速節奏。</div>
+                </li>
+                <li>
+                    <span class="time">10:30 - 14:00</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=大館+香港" target="_blank">大館 Tai Kwun <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport" style="background:#e8ebf7; color:#3f51b5; border-color:#3f51b5;">
+                        <div class="train-wrap">
+                            <div class="train-container">
+                                <div class="train-window tw1"></div>
+                                <div class="train-window tw2"></div>
+                                <div class="train-window tw3"></div>
+                            </div>
+                        </div>
+                        <span>港鐵佐敦站 ➔ 中環站</span>
+                    </div>
+                    <div class="note">舊中區警署古蹟活化。午餐可於中環享用 (如沾仔記、蘭芳園)。</div>
+                </li>
+                <li>
+                    <span class="time">15:30 - 19:30</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=太平山山頂廣場+香港" target="_blank">太平山夜景 ＆ 晚餐 <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport" style="background:#e8f6f3; color:#1abc9c; border-color:#1abc9c;">
+                        <div class="bus-container">
+                            <div class="bus-body" style="background:#1abc9c; border-bottom:3px solid #16a085;"></div>
+                            <div class="bus-window"></div>
+                            <div class="wheel front"></div>
+                            <div class="wheel back"></div>
+                        </div>
+                        <span>搭叮叮車至纜車總站</span>
+                    </div>
+                    <div class="note">使用 <span style="color:#e74c3c; font-weight:bold;">Fun Pass</span> 換山頂纜車門票！傍晚看日落，晚餐在山頂廣場吃。</div>
+                </li>
+                <li>
+                    <span class="time">20:00 - 21:00</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=紅茶館酒店+油麻地鴉打街6號" target="_blank">返回油麻地飯店 <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport" style="background:#e8ebf7; color:#3f51b5; border-color:#3f51b5;">
+                        <div class="train-wrap">
+                            <div class="train-container">
+                                <div class="train-window tw1"></div>
+                                <div class="train-window tw2"></div>
+                                <div class="train-window tw3"></div>
+                            </div>
+                        </div>
+                        <span>港鐵中環站 ➔ 油麻地站</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="card">
+            <h2>Day 3 ✦ 11/15 (日)</h2>
+            <ul>
+                <li>
+                    <span class="time">09:30 - 10:30</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=大安茶氷廳+香港" target="_blank">大安茶氷廳 (早餐) <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="walk-container">
+                            <div class="person-head"></div>
+                            <div class="person-body"></div>
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <span>步行 3 分鐘</span>
+                    </div>
+                    <div class="note">保留舊時代裝潢的懷舊冰室，來杯港式奶茶與西多士。</div>
+                </li>
+                <li>
+                    <span class="time">11:00 - 14:00</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=一點心+香港太子" target="_blank">一點心 (午餐) <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport" style="background:#e8ebf7; color:#3f51b5; border-color:#3f51b5;">
+                        <div class="train-wrap">
+                            <div class="train-container">
+                                <div class="train-window tw1"></div>
+                                <div class="train-window tw2"></div>
+                                <div class="train-window tw3"></div>
+                            </div>
+                        </div>
+                        <span>港鐵油麻地站 ➔ 太子站</span>
+                    </div>
+                    <div class="note">平價米其林點心，必點蝦餃、燒賣。餐後可逛旺角女人街。</div>
+                </li>
+                <li>
+                    <span class="time">14:30 - 15:30</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=金華冰廳+香港" target="_blank">金華冰廳 (下午茶) <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="walk-container">
+                            <div class="person-head"></div>
+                            <div class="person-body"></div>
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <span>從旺角步行約 10 分鐘</span>
+                    </div>
+                    <div class="note">號稱全港第一的「冰火菠蘿油」，剛出爐的酥脆絕對必吃。</div>
+                </li>
+                <li>
+                    <span class="time">16:30 - 20:00</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=尖沙咀星光大道+香港" target="_blank">尖沙咀星光大道漫步 <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport" style="background:#e8ebf7; color:#3f51b5; border-color:#3f51b5;">
+                        <div class="train-wrap">
+                            <div class="train-container">
+                                <div class="train-window tw1"></div>
+                                <div class="train-window tw2"></div>
+                                <div class="train-window tw3"></div>
+                            </div>
+                        </div>
+                        <span>港鐵旺角站 ➔ 尖沙咀站</span>
+                    </div>
+                    <div class="note">傍晚前往星光大道吹海風欣賞維港，晚餐於尖沙咀一帶享用。</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="card">
+            <h2>Day 4 ✦ 11/16 (一)</h2>
+            <ul>
+                <li>
+                    <span class="time">09:00 - 11:00</span>
+                    <span class="spot">周邊最後採買 ＆ 早餐</span>
+                    <div class="note">在油麻地周邊買些伴手禮，或吃碗生滾粥當早餐。</div>
+                </li>
+                <li>
+                    <span class="time">11:30</span>
+                    <span class="spot">飯店退房 🗝️</span>
+                    <div class="note">請於最晚 11:30 前完成退房，可先將行李寄放櫃台。</div>
+                </li>
+                <li>
+                    <span class="time">11:45 - 13:00</span>
+                    <span class="spot">午餐時間 🥢</span>
+                    <div class="note">在飯店附近吃頓簡單的午餐（如港式燒臘或麵食）。</div>
+                </li>
+                <li>
+                    <span class="time">13:15 - 14:15</span>
+                    <span class="spot">
+                        <a href="https://www.google.com/maps/search/?api=1&query=香港國際機場" target="_blank">出發前往機場 <span class="pin-container"><span class="pin-dot"></span><span class="pin-pulse"></span></span></a>
+                    </span>
+                    <div class="transport">
+                        <div class="bus-container">
+                            <div class="bus-body"></div>
+                            <div class="bus-window"></div>
+                            <div class="wheel front"></div>
+                            <div class="wheel back"></div>
+                        </div>
+                        <span>城巴 A21 (往機場)</span>
+                    </div>
+                    <div class="note">於「文明里」對面的巴士站搭車前往機場。</div>
+                </li>
+                <li>
+                    <span class="time">14:30</span>
+                    <span class="spot">抵達機場報到 🎫</span>
+                    <div class="note">辦理 HX260 航班報到與行李托運 (23kg)。</div>
+                </li>
+                <li>
+                    <span class="time">16:30</span>
+                    <span class="spot">起飛返台 ✈️</span>
+                    <div class="note">帶著滿滿回憶，結束愉快的香港之旅！</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
